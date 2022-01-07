@@ -2,10 +2,9 @@ package br.com.giovanni.indaiaModas.entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,6 +24,9 @@ public class Products {
     @Autowired
     private Integer quantityInStock;
 
+    @ManyToOne
+    private List<Category> categories = new ArrayList<>();
+
     public Products() {
     }
 
@@ -35,6 +37,8 @@ public class Products {
         this.price = price;
         this.pricewithdiscount = pricewithdiscount;
         this.quantityInStock = quantityInStock;
+
+
     }
 
     public Integer getId() {
